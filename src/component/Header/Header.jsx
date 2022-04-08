@@ -8,7 +8,7 @@ export const Header = () => {
       <header className="flex align-center justify-between mx-sm">
         <figure className="logo">
           <Link to="/">
-            <img src={Logo} alt="AutoTube" />
+            <img src={Logo} alt="AutoTube" height="80" width="80" />
           </Link>
         </figure>
         <div>
