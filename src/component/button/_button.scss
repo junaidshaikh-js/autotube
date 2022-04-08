@@ -1,0 +1,34 @@
+.btn {
+  background-color: transparent;
+  border: none;
+  border-radius: 2px !important;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.875rem;
+  outline: none;
+  padding: 0.6rem 0.8rem;
+  text-transform: uppercase;
+  transition: background-color 0.2s linear;
+
+  &-auto-primary {
+    background-color: $primary-cta;
+    color: $white;
+
+    &:hover {
+      background-color: $primary-cta-dark;
+    }
+  }
+
+  &-auto-secondary {
+    color: $white;
+
+    &:hover {
+      background-color: $hover-background;
+    }
+  }
+
+  &:focus {
+    outline: 1px solid $white;
+    outline-offset: 2px;
+  }
+}
