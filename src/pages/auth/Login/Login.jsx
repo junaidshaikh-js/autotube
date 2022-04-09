@@ -13,7 +13,7 @@ export const Login = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   return (
-    <div className="login-main-wrapper flex flex-center">
+    <div className="wrapper login-main-wrapper flex flex-center">
       <main>
         <div className="login-form-wrapper bg-white">
           <div className="mt-1 p-1">

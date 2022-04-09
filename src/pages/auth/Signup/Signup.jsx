@@ -23,7 +23,7 @@ export const Signup = () => {
   };
 
   return (
-    <div className="signup-main-wrapper flex flex-center mt-1">
+    <div className="wrapper signup-main-wrapper flex flex-center mt-1">
       <main>
         <div className="signup-form-wrapper  bg-white p-1">
           <form>
