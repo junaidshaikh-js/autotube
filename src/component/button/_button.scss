@@ -3,7 +3,7 @@
   border: none;
   border-radius: 2px !important;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.875rem;
   outline: none;
   padding: 0.6rem 0.8rem;
@@ -12,11 +12,15 @@
 
   &-auto-primary {
     background-color: $primary-cta;
-    color: $white;
+    color: $white !important; // to overwrite the properties from component library
 
     &:hover {
       background-color: $primary-cta-dark;
     }
+  }
+
+  &-auto-primary-outline {
+    border: 1px solid $primary-cta !important;
   }
 
   &-auto-secondary {
