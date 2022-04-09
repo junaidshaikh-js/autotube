@@ -1,0 +1,26 @@
+.login-main-wrapper,
+.signup-main-wrapper {
+  min-height: 80vh;
+}
+
+.login-form-wrapper,
+.signup-form-wrapper {
+  border-radius: 4px;
+  color: $black;
+  width: min(90vw, 400px);
+
+  .input-icon {
+    position: relative;
+  }
+
+  .input-icon input {
+    padding-right: 4rem;
+  }
+
+  .show-password-icon-container {
+    cursor: pointer;
+    position: absolute;
+    top: 7px;
+    right: 15px;
+  }
+}

@@ -1,6 +1,8 @@
 .app-navigation {
+  background-color: $primary-black;
   bottom: 0;
   position: fixed;
+  z-index: 1;
 
   &__links {
     font-size: 1.2rem;

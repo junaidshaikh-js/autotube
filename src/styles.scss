@@ -11,11 +11,13 @@ $primary-black: hsl(0, 0%, 9%);
 $hover-background: hsl(219, 15%, 23%);
 
 $white: hsl(0, 0%, 97%);
+$black: hsl(0, 0%, 0%);
 $gray-dark: hsl(0, 0%, 35%);
 $gray: hsl(0, 0%, 50%);
 $gray-light: hsl(0, 0%, 60%);
 
 @import "./component/index.scss";
+@import "./pages/index.scss";
 
 /* css reset */
 html {
@@ -35,6 +37,10 @@ body {
   color: $white;
   font-family: $primary-font-family;
   overflow-x: hidden;
+}
+
+::placeholder {
+  font-family: $primary-font-family;
 }
 
 img {
@@ -100,6 +106,22 @@ ul {
 // border
 .border-bottom {
   border-bottom: 1px solid $white;
+}
+
+.border-top-black {
+  border-top: 1px solid $black;
+}
+
+// background
+.bg-white {
+  background-color: white;
+
+  .btn:focus,
+  input:focus {
+    box-shadow: none;
+    outline: 1px solid $black;
+    outline-offset: 2px;
+  }
 }
 
 // width
