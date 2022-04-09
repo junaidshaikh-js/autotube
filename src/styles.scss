@@ -117,13 +117,13 @@ ul {
   top: -500px;
 }
 
-// hide the elements below 48em = 768px
-.hide-small {
+// hide the elements below 56.25em = 900px
+.hide-small-900 {
   display: none;
 }
 
-@media screen and (min-width: 48em) {
-  .hide-small {
+@media screen and (min-width: 56.25em) {
+  .hide-small-900 {
     display: block;
   }
 }

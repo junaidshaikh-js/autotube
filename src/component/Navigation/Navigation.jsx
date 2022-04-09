@@ -12,7 +12,7 @@ const getActiveStyles = ({ isActive }) => {
 export const Navigation = () => {
   return (
     <aside className="app-navigation w-100" aria-label="App Navigation">
-      <ul className="app-navigation__links flex  py-1 mx-1">
+      <ul className="app-navigation__links flex  py-1 mx-sm">
         <li>
           <NavLink
             style={getActiveStyles}
@@ -20,7 +20,7 @@ export const Navigation = () => {
             className="app-navigation--link"
           >
             <FaHome title="Home" />
-            <span className="hide-small">Home</span>
+            <span className="hide-small-900">Home</span>
           </NavLink>
         </li>
         <li>
@@ -30,7 +30,7 @@ export const Navigation = () => {
             style={getActiveStyles}
           >
             <MdExplore title="Explore" />
-            <span className="hide-small">Explore</span>
+            <span className="hide-small-900">Explore</span>
           </NavLink>
         </li>
         <li>
@@ -40,7 +40,7 @@ export const Navigation = () => {
             style={getActiveStyles}
           >
             <MdFeaturedPlayList title="Playlist" />
-            <span className="hide-small">Playlist</span>
+            <span className="hide-small-900">Playlist</span>
           </NavLink>
         </li>
         <li>
@@ -50,7 +50,7 @@ export const Navigation = () => {
             style={getActiveStyles}
           >
             <FaClock title="Watch Later" />
-            <span className="hide-small">Watch Later</span>
+            <span className="hide-small-900">Watch Later</span>
           </NavLink>
         </li>
         <li>
@@ -60,7 +60,7 @@ export const Navigation = () => {
             style={getActiveStyles}
           >
             <FaHistory title="History" />
-            <span className="hide-small">History</span>
+            <span className="hide-small-900">History</span>
           </NavLink>
         </li>
         <li>
@@ -70,7 +70,7 @@ export const Navigation = () => {
             style={getActiveStyles}
           >
             <AiFillLike title="Liked Videos" />
-            <span className="hide-small">Liked Videos</span>
+            <span className="hide-small-900">Liked Videos</span>
           </NavLink>
         </li>
       </ul>
