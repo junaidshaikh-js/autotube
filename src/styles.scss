@@ -81,6 +81,10 @@ ul {
   justify-content: center;
 }
 
+.justify-around {
+  justify-content: space-around;
+}
+
 .align-center {
   align-items: center;
 }
@@ -98,6 +102,11 @@ ul {
   border-bottom: 1px solid $white;
 }
 
+// width
+.w-100 {
+  width: 100%;
+}
+
 // other
 .visually-hidden {
   position: absolute;
@@ -106,4 +115,15 @@ ul {
   overflow: hidden;
   left: 0;
   top: -500px;
+}
+
+// hide the elements below 48em = 768px
+.hide-small {
+  display: none;
+}
+
+@media screen and (min-width: 48em) {
+  .hide-small {
+    display: block;
+  }
 }
