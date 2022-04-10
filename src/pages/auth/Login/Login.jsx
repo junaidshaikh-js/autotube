@@ -1,16 +1,17 @@
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import {
   PrimaryBtn,
   PrimaryBtnOutline,
   BottomLink,
   FormRow,
-  Label,
-  ShowPasswordVisibility,
-  ErrorMessage,
+  Loader,
 } from "../../../component";
+
 import { getFormErrors } from "../utils/getFormErrors";
 import { handleInputChange } from "../utils/handleInputChange";
+import { useAuth } from "../../../context";
 
 export const Login = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -22,12 +23,29 @@ export const Login = () => {
     email: "",
     password: "",
   });
+  const [isLogging, setIsLogging] = useState(false);
+
+  const { handleLogin, dispatch: authDispatch } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  const testLogin = {
+    email: "sj.shaikhjunaid@gmail.com",
+    password: "junaidshaikh",
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const errors = getFormErrors(formValues);
     setLoginErrors(errors);
+
+    if (!Object.keys(errors).length) {
+      const { email, password } = formValues;
+
+      handleLogin(email, password, authDispatch, setIsLogging, navigate, from);
+    }
   };
 
   return (
@@ -57,12 +75,29 @@ export const Login = () => {
                 onShowPassword={() => setIsPasswordVisible((i) => !i)}
               />
 
-              <PrimaryBtn cnames="w-100 my-sm" type="submit">
+              <PrimaryBtn
+                cnames="w-100 my-sm"
+                type="submit"
+                disable={isLogging}
+              >
                 Login
               </PrimaryBtn>
             </form>
 
-            <PrimaryBtnOutline cnames="w-100 my-sm">
+            <PrimaryBtnOutline
+              cnames="w-100 my-sm"
+              onClick={() => {
+                handleLogin(
+                  testLogin.email,
+                  testLogin.password,
+                  authDispatch,
+                  setIsLogging,
+                  navigate,
+                  from
+                );
+              }}
+              disable={isLogging}
+            >
               Login as Guest
             </PrimaryBtnOutline>
 
@@ -70,6 +105,8 @@ export const Login = () => {
           </div>
         </div>
       </main>
+
+      {isLogging && <Loader />}
     </div>
   );
 };
