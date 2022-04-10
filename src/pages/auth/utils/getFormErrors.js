@@ -22,7 +22,9 @@ export const getFormErrors = (formValues) => {
     errors.lastName = "Enter Last Name";
   }
 
-  if (confirmPassword == "") {
+  if (confirmPassword == undefined) {
+    return errors;
+  } else if (confirmPassword == "") {
     errors.confirmPassword = "Enter Password Again";
   } else if (confirmPassword != password) {
     errors.confirmPassword = "Password doesn't match";
