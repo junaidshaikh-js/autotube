@@ -1,11 +1,23 @@
 import { Loader } from "./loader/Loader";
 import { InlineLoader } from "./loader/InlineLoader";
+import { PrimaryBtn } from "./button/PrimaryBtn/PrimaryBtn";
+import { PrimaryBtnOutline } from "./button/PrimaryBtnOutline/PrimaryBtnOutline";
+import { SecondaryBtn } from "./button/SecondaryBtn/SecondaryBtn";
+import { Header } from "./Header/Header";
+import { Navigation } from "./Navigation/Navigation";
+import { BottomLink } from "./BottomLink/BottomLink";
+import { FormRow } from "./FormRow/FormRow";
+import { ErrorMessage } from "./ErrorMessage/ErrorMessage";
 
-export { Loader, InlineLoader };
-
-export * from "./button";
-export * from "./Header";
-export * from "./Navigation";
-export * from "./BottomLink";
-export * from "./FormRow";
-export * from "./ErrorMessage";
+export {
+  Loader,
+  InlineLoader,
+  PrimaryBtn,
+  PrimaryBtnOutline,
+  SecondaryBtn,
+  Header,
+  Navigation,
+  BottomLink,
+  FormRow,
+  ErrorMessage,
+};
