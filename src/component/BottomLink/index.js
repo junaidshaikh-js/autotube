@@ -1,1 +1,0 @@
-export { BottomLink } from "./BottomLink";
