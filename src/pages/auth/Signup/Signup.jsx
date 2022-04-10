@@ -1,8 +1,10 @@
 import { useState } from "react";
 
-import { PrimaryBtn, FormRow, BottomLink } from "../../../component";
+import { PrimaryBtn, FormRow, BottomLink, Loader } from "../../../component";
 import { handleInputChange } from "../utils/handleInputChange";
 import { getFormErrors } from "../utils/getFormErrors";
+import { useAuth } from "../../../context";
+import { useNavigate } from "react-router-dom";
 
 export const Signup = () => {
   const initialValues = {
@@ -19,6 +21,10 @@ export const Signup = () => {
   });
   const [formValues, setFormValues] = useState(initialValues);
   const [signupErrors, setSignupErrors] = useState(initialValues);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { handleSignup, dispatch: authDispatch } = useAuth();
+  const navigate = useNavigate();
 
   const handlevisibility = (value) => {
     value == "password"
@@ -31,6 +37,20 @@ export const Signup = () => {
 
     const errors = getFormErrors(formValues);
     setSignupErrors(errors);
+
+    if (!Object.keys(errors).length) {
+      const { email, password, firstName, lastName } = formValues;
+
+      handleSignup(
+        email,
+        password,
+        firstName,
+        lastName,
+        setIsLoading,
+        authDispatch,
+        navigate
+      );
+    }
   };
 
   return (
@@ -90,7 +110,7 @@ export const Signup = () => {
               onShowPassword={() => handlevisibility("confirmPassword")}
             />
 
-            <PrimaryBtn cnames="w-100 mt-sm" type="submit">
+            <PrimaryBtn cnames="w-100 mt-sm" type="submit" disable={isLoading}>
               Create New Account
             </PrimaryBtn>
           </form>
@@ -98,6 +118,8 @@ export const Signup = () => {
           <BottomLink to="/login" text="Already have an account" />
         </div>
       </main>
+
+      {isLoading && <Loader />}
     </div>
   );
 };

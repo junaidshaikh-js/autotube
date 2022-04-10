@@ -3,6 +3,33 @@
   height: 70px;
 }
 
+.logout-wrapper {
+  position: relative;
+  font-size: 1.2rem;
+
+  div:first-child {
+    transition: 0.2s;
+  }
+
+  .logout-btn {
+    position: absolute;
+    background-color: $gray-dark;
+    color: $white;
+    width: 140%;
+    height: 4rem;
+    top: 105%;
+
+    button {
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: $gray;
+      color: $black;
+    }
+  }
+}
+
 @media screen and (min-width: 48em) {
   .logo {
     width: 80px;
