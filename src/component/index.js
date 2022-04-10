@@ -8,6 +8,7 @@ import { Navigation } from "./Navigation/Navigation";
 import { BottomLink } from "./BottomLink/BottomLink";
 import { FormRow } from "./FormRow/FormRow";
 import { ErrorMessage } from "./ErrorMessage/ErrorMessage";
+import { Toast } from "./Toast/Toast";
 
 export {
   Loader,
@@ -20,4 +21,5 @@ export {
   BottomLink,
   FormRow,
   ErrorMessage,
+  Toast,
 };
