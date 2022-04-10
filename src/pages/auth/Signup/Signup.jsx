@@ -1,37 +1,51 @@
 import { useState } from "react";
 
-import {
-  PrimaryBtn,
-  ShowPasswordVisibility,
-  FormRow,
-  Label,
-  BottomLink,
-} from "../../../component";
+import { PrimaryBtn, FormRow, BottomLink } from "../../../component";
+import { handleInputChange } from "../utils/handleInputChange";
+import { getFormErrors } from "../utils/getFormErrors";
 
 export const Signup = () => {
+  const initialValues = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  };
+
   const [visibility, setVisibility] = useState({
     password: false,
     confirmPassword: false,
   });
+  const [formValues, setFormValues] = useState(initialValues);
+  const [signupErrors, setSignupErrors] = useState(initialValues);
 
   const handlevisibility = (value) => {
-    if (value == "password") {
-      setVisibility((v) => ({ ...v, password: !v.password }));
-    } else {
-      setVisibility((v) => ({ ...v, confirmPassword: !v.confirmPassword }));
-    }
+    value == "password"
+      ? setVisibility((v) => ({ ...v, password: !v.password }))
+      : setVisibility((v) => ({ ...v, confirmPassword: !v.confirmPassword }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const errors = getFormErrors(formValues);
+    setSignupErrors(errors);
   };
 
   return (
     <div className="wrapper signup-main-wrapper flex flex-center mt-1">
       <main>
         <div className="signup-form-wrapper  bg-white p-1">
-          <form>
+          <form onSubmit={handleSubmit}>
             <FormRow
               id="firstName"
               labelText=" First Name"
               inputType="text"
               placeholder="John"
+              value={formValues.firstName}
+              onChange={(e) => handleInputChange(e, setFormValues)}
+              inputError={signupErrors.firstName}
             />
 
             <FormRow
@@ -39,6 +53,9 @@ export const Signup = () => {
               labelText="Last Name"
               inputType="text"
               placeholder="Doe"
+              value={formValues.lastName}
+              onChange={(e) => handleInputChange(e, setFormValues)}
+              inputError={signupErrors.lastName}
             />
 
             <FormRow
@@ -46,44 +63,32 @@ export const Signup = () => {
               labelText="Email Address"
               inputType="email"
               placeholder="johndoe@example.com"
+              value={formValues.email}
+              onChange={(e) => handleInputChange(e, setFormValues)}
+              inputError={signupErrors.email}
             />
 
-            <div>
-              <Label to="password" text="Password" />
+            <FormRow
+              id="password"
+              labelText="Password"
+              inputType="password"
+              value={formValues.password}
+              onChange={(e) => handleInputChange(e, setFormValues)}
+              inputError={signupErrors.password}
+              isVisible={visibility.password}
+              onShowPassword={() => handlevisibility("password")}
+            />
 
-              <div className="input-icon">
-                <input
-                  type={visibility.password ? "text" : "password"}
-                  className="form-field my-sm p-sm w-100"
-                  placeholder="*********"
-                  id="password"
-                  required
-                />
-
-                <ShowPasswordVisibility
-                  isVisible={visibility.password}
-                  onClick={() => handlevisibility("password")}
-                />
-              </div>
-            </div>
-
-            <div>
-              <Label to="confirmPassword" text="Confirm Password" />
-
-              <div className="input-icon">
-                <input
-                  type={visibility.confirmPassword ? "text" : "password"}
-                  className="form-field my-sm p-sm w-100"
-                  placeholder="*********"
-                  id="confirmPassword"
-                />
-
-                <ShowPasswordVisibility
-                  isVisible={visibility.confirmPassword}
-                  onClick={() => handlevisibility("confirmPassword")}
-                />
-              </div>
-            </div>
+            <FormRow
+              id="confirmPassword"
+              labelText="Confirm Password"
+              inputType="password"
+              value={formValues.confirmPassword}
+              onChange={(e) => handleInputChange(e, setFormValues)}
+              inputError={signupErrors.confirmPassword}
+              isVisible={visibility.confirmPassword}
+              onShowPassword={() => handlevisibility("confirmPassword")}
+            />
 
             <PrimaryBtn cnames="w-100 mt-sm" type="submit">
               Create New Account
