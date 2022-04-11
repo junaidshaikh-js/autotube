@@ -1,0 +1,56 @@
+.landing-page-main {
+  .banner-section {
+    position: relative;
+
+    .banner {
+      max-height: 60vh;
+
+      img {
+        height: 50vh;
+        width: 100%;
+        opacity: 0.3;
+      }
+    }
+
+    &__heading {
+      position: absolute;
+      top: 15%;
+
+      p {
+        font-size: 1.2rem;
+      }
+
+      a {
+        color: $white;
+      }
+
+      .btn-auto-secondary-outline:hover,
+      .btn-auto-secondary-outline:focus {
+        background-color: $white;
+        color: $black;
+      }
+    }
+  }
+
+  .section-heading {
+    width: fit-content;
+    border-bottom: 2px solid red;
+  }
+
+  .video-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    justify-content: center;
+    justify-items: center;
+  }
+}
+
+@media screen and (min-width: 30em) {
+  .landing-page-main {
+    .banner-section {
+      &__heading {
+        top: 30%;
+      }
+    }
+  }
+}
