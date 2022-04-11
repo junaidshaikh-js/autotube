@@ -12,6 +12,8 @@ import {
   Signup,
 } from "../pages";
 
+import { RequireAuth } from "../component";
+
 export function Router() {
   return (
     <Routes>
@@ -19,10 +21,38 @@ export function Router() {
       <Route path="/explore" element={<VideoListing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/playlist" element={<Playlist />} />
-      <Route path="/watch-later" element={<WatchLater />} />
-      <Route path="/history" element={<History />} />
-      <Route path="/liked-videos" element={<LikedVideos />} />
+      <Route
+        path="/playlist"
+        element={
+          <RequireAuth>
+            <Playlist />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/watch-later"
+        element={
+          <RequireAuth>
+            <WatchLater />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/history"
+        element={
+          <RequireAuth>
+            <History />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/liked-videos"
+        element={
+          <RequireAuth>
+            <LikedVideos />
+          </RequireAuth>
+        }
+      />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

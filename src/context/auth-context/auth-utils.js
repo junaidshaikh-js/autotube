@@ -18,7 +18,8 @@ export const handleLogin = async (
   authDispatch,
   setIsLogging,
   navigate,
-  from
+  from,
+  setToastMessage
 ) => {
   setIsLogging(true);
   try {
@@ -49,21 +50,26 @@ export const handleLogin = async (
       });
 
       navigate(from);
+      setToastMessage({ type: "success", message: "Login Successful!" });
     }
 
     setIsLogging(false);
   } catch (error) {
+    if (error.response.status == 401) {
+      setToastMessage({ type: "error", message: "Inavid email or password." });
+    }
     setIsLogging(false);
     throw new Error("User can not logged in", error);
   }
 };
 
-export const handleLogout = (authDispatch, navigate) => {
+export const handleLogout = (authDispatch, navigate, setToastMessage) => {
   localStorage.clear();
 
   authDispatch({ type: abreviations.logout });
 
   navigate("/");
+  setToastMessage({ type: "success", message: "Logout Successful!" });
 };
 
 export const handleSignup = async (
@@ -73,7 +79,8 @@ export const handleSignup = async (
   lastName,
   setIsLoading,
   authDispatch,
-  navigate
+  navigate,
+  setToastMessage
 ) => {
   setIsLoading(true);
 
@@ -93,8 +100,16 @@ export const handleSignup = async (
       handleLogin(email, password, authDispatch, setIsLoading, navigate, "/");
 
       setIsLoading(false);
+
+      setToastMessage({ type: "success", message: "Signup Successful" });
     }
   } catch (error) {
+    if (error.response.status == 422) {
+      setToastMessage({
+        type: "info",
+        message: "You are already registered with us. Please log in.",
+      });
+    }
     setIsLoading(false);
     throw new Error("Can not sign up");
   }

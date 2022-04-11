@@ -3,7 +3,7 @@ import { useState } from "react";
 import { PrimaryBtn, FormRow, BottomLink, Loader } from "../../../component";
 import { handleInputChange } from "../utils/handleInputChange";
 import { getFormErrors } from "../utils/getFormErrors";
-import { useAuth } from "../../../context";
+import { useAuth, useToast } from "../../../context";
 import { useNavigate } from "react-router-dom";
 
 export const Signup = () => {
@@ -24,6 +24,8 @@ export const Signup = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const { handleSignup, dispatch: authDispatch } = useAuth();
+  const { setToastMessage } = useToast();
+
   const navigate = useNavigate();
 
   const handlevisibility = (value) => {
@@ -48,7 +50,8 @@ export const Signup = () => {
         lastName,
         setIsLoading,
         authDispatch,
-        navigate
+        navigate,
+        setToastMessage
       );
     }
   };
