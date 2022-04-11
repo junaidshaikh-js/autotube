@@ -1,0 +1,35 @@
+.toast {
+  animation: show 0.3s linear;
+  background-color: $white;
+  bottom: 80px;
+  box-shadow: 1px 1px 7px $black;
+  padding: 1rem;
+  position: absolute;
+
+  &-success {
+    color: green;
+  }
+
+  &-error {
+    color: red;
+  }
+}
+
+@media screen and (min-width: 48em) {
+  .toast-container {
+    align-items: flex-start;
+
+    .toast {
+      left: 10px;
+    }
+  }
+}
+
+@keyframes show {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
