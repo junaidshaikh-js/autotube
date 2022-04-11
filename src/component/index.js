@@ -9,6 +9,7 @@ import { BottomLink } from "./BottomLink/BottomLink";
 import { FormRow } from "./FormRow/FormRow";
 import { ErrorMessage } from "./ErrorMessage/ErrorMessage";
 import { Toast } from "./Toast/Toast";
+import { RequireAuth } from "./RequireAuth/RequireAuth";
 
 export {
   Loader,
@@ -22,4 +23,5 @@ export {
   FormRow,
   ErrorMessage,
   Toast,
+  RequireAuth,
 };

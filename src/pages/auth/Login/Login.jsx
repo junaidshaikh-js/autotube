@@ -11,7 +11,7 @@ import {
 
 import { getFormErrors } from "../utils/getFormErrors";
 import { handleInputChange } from "../utils/handleInputChange";
-import { useAuth } from "../../../context";
+import { useAuth, useToast } from "../../../context";
 
 export const Login = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -26,9 +26,11 @@ export const Login = () => {
   const [isLogging, setIsLogging] = useState(false);
 
   const { handleLogin, dispatch: authDispatch } = useAuth();
+  const { setToastMessage } = useToast();
+
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.pathname || "/";
 
   const testLogin = {
     email: "sj.shaikhjunaid@gmail.com",
@@ -44,7 +46,15 @@ export const Login = () => {
     if (!Object.keys(errors).length) {
       const { email, password } = formValues;
 
-      handleLogin(email, password, authDispatch, setIsLogging, navigate, from);
+      handleLogin(
+        email,
+        password,
+        authDispatch,
+        setIsLogging,
+        navigate,
+        from,
+        setToastMessage
+      );
     }
   };
 
@@ -93,7 +103,8 @@ export const Login = () => {
                   authDispatch,
                   setIsLogging,
                   navigate,
-                  from
+                  from,
+                  setToastMessage
                 );
               }}
               disable={isLogging}
