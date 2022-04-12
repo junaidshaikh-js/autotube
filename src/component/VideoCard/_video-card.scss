@@ -1,0 +1,17 @@
+.video-card {
+  width: min(90vw, 300px);
+
+  .thumbnail {
+    background-color: black;
+  }
+
+  .video-views::after {
+    content: "•";
+    margin-left: 0.5rem;
+  }
+
+  .channel-image {
+    width: 40px;
+    height: 40px;
+  }
+}
