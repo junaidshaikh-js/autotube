@@ -142,7 +142,7 @@ export const videos = [
     title: "Clutch, How does it work?",
     description: "Learn the working of clutch",
     thumbnail:
-      "https://res.cloudinary.com/junaidshaikh/image/upload/v1649748786/AutoTube/AKedOLQIDHVPkw5AHoCYqBgRrDufr5CdnLAKMSTpsPNg_s88-c-k-c0x00ffffff-no-rj_p7hozs.jpg",
+      "https://res.cloudinary.com/junaidshaikh/image/upload/v1649748859/AutoTube/mqdefault_xi6ppw.jpg",
     channelName: "Lesics",
     channelImage:
       "https://res.cloudinary.com/junaidshaikh/image/upload/v1649749512/AutoTube/AKedOLQk4PZeCBWsaycyvlMGC7g9t165mvYnvjkeNUMqKA_s88-c-k-c0x00ffffff-no-rj_lmqajb.jpg",
@@ -170,7 +170,7 @@ export const videos = [
     description:
       "Have you ever wondered what happens when you turn the key inside your car ignition? In this simple video we will explain all the steps involved in this process, from the ignition to the operation of the internal combustion engine.",
     thumbnail:
-      "https://res.cloudinary.com/junaidshaikh/image/upload/v1649749759/AutoTube/AKedOLSMaZqiaGcG0EC8RaXNwNqPTxl9mdZ3CUv4Mcx49g_s88-c-k-c0x00ffffff-no-rj_pfht93.jpg",
+      "https://res.cloudinary.com/junaidshaikh/image/upload/v1649749957/AutoTube/mqdefault_vmiamu.jpg",
     channelName: "JAES Company",
     channelImage:
       "https://res.cloudinary.com/junaidshaikh/image/upload/v1649749992/AutoTube/AKedOLTscLQaLXNBiWHchxxu1wOcLPiFjeLf-mLHcHPiCA_s88-c-k-c0x00ffffff-no-rj_yrddbp.jpg",
