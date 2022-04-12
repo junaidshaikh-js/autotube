@@ -30,7 +30,11 @@ export const VideoCard = ({ video }) => {
       <p className="mt-sm mb-0">{title}</p>
 
       <div className="flex mt-sm">
-        <img src={channelImage} alt="" className="channel-image img-round" />
+        <img
+          src={channelImage}
+          alt={channelName}
+          className="channel-image img-round"
+        />
         <div className="txt-secondary ml-1">
           <span>{channelName}</span>
           <div className="flex">
