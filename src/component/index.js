@@ -12,6 +12,7 @@ import { ErrorMessage } from "./ErrorMessage/ErrorMessage";
 import { Toast } from "./Toast/Toast";
 import { RequireAuth } from "./RequireAuth/RequireAuth";
 import { VideoCard } from "./VideoCard/VideoCard";
+import { Filters } from "./Filters/Filters";
 
 export {
   Loader,
@@ -28,4 +29,5 @@ export {
   RequireAuth,
   SecondaryBtnOutline,
   VideoCard,
+  Filters,
 };
