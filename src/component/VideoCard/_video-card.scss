@@ -7,11 +7,24 @@
 
   .video-views::after {
     content: "•";
-    margin-left: 0.5rem;
+    margin-left: 4px;
+    margin-right: 4px;
   }
 
   .channel-image {
     width: 40px;
     height: 40px;
+  }
+
+  .video-title {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 48em) {
+  .video-card {
+    .video-title {
+      font-size: 0.875rem;
+    }
   }
 }
