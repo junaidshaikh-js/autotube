@@ -25,7 +25,7 @@ export const VideoCard = ({ video }) => {
   return (
     <article className="video-card mt-sm mb-1">
       <figure className="txt-center thumbnail">
-        <img src={thumbnail} alt="video thumbnail" />
+        <img src={thumbnail} alt="video thumbnail" width="300" height="180" />
       </figure>
       <p className="mt-sm mb-0">{title}</p>
 
