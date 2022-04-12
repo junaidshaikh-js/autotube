@@ -1,0 +1,44 @@
+.video-listing-main {
+  .video-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    justify-content: center;
+    justify-items: center;
+  }
+
+  .filter-section {
+    .filter-btns {
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2rem;
+      height: 0;
+      overflow: hidden;
+      transition: all 0.3s linear;
+    }
+
+    .btn.active {
+      background-color: $white;
+      color: $black;
+    }
+
+    .mobile-filter-btn {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .show {
+      height: auto;
+    }
+  }
+}
+
+@media screen and (min-width: 48em) {
+  .video-listing-main {
+    .filter-section {
+      .filter-btns {
+        height: auto;
+      }
+    }
+  }
+}
