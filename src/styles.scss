@@ -144,6 +144,16 @@ ul {
   display: none;
 }
 
+.hide-big-48 {
+  display: block;
+}
+
+@media screen and (min-width: 48em) {
+  .hide-big-48 {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 56.25em) {
   .hide-small-900 {
     display: block;
