@@ -10,6 +10,7 @@ import {
   LikedVideos,
   Login,
   Signup,
+  SingleVideoPage,
 } from "../pages";
 
 import { RequireAuth } from "../component";
@@ -19,6 +20,7 @@ export function Router() {
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/explore" element={<VideoListing />} />
+      <Route path="/watch/:id" element={<SingleVideoPage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route

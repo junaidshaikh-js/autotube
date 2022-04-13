@@ -1,11 +1,4 @@
 .video-listing-main {
-  .video-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    justify-content: center;
-    justify-items: center;
-  }
-
   .filter-section {
     .filter-btns {
       flex-wrap: wrap;
@@ -30,6 +23,17 @@
     .show {
       height: auto;
     }
+  }
+}
+
+.video-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  justify-content: center;
+  justify-items: center;
+
+  a {
+    color: $white;
   }
 }
 

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { useVideo } from "../../context";
 import { VideoCard, Filters } from "../../component";
 
@@ -22,7 +24,11 @@ export const VideoListing = () => {
         </div>
         <section className="video-container">
           {filteredVideos.map((video) => {
-            return <VideoCard video={video} key={video._id} />;
+            return (
+              <Link to={`/watch/${video.videoId}`} key={video.videoId}>
+                <VideoCard video={video} />
+              </Link>
+            );
           })}
         </section>
       </main>
