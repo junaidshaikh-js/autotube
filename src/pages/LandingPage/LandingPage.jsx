@@ -33,7 +33,11 @@ export const LandingPage = () => {
           <h2 className="h3 section-heading mt-2">Trending Videos</h2>
           <div className="video-container mt-2">
             {trendingVideos.map((video) => {
-              return <VideoCard video={video} key={video._id} />;
+              return (
+                <Link to={`/watch/${video.videoId}`} key={video.videoId}>
+                  <VideoCard video={video} />
+                </Link>
+              );
             })}
           </div>
         </section>
