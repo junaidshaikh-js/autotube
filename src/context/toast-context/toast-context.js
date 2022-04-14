@@ -9,20 +9,6 @@ const ToastContext = createContext(initialValue);
 
 const ToastProvider = ({ children }) => {
   const [toastMessage, setToastMessage] = useState(initialValue);
-  const [timerId, setTimerId] = useState(null);
-
-  useEffect(() => {
-    clearTimeout(timerId);
-
-    let id = setTimeout(() => {
-      setToastMessage({
-        type: "",
-        message: "",
-      });
-    }, 3000);
-
-    setTimerId(id);
-  }, [toastMessage]);
 
   const value = { toastMessage, setToastMessage };
 
