@@ -43,7 +43,7 @@ export const HorizontalVideoCard = ({ video }) => {
               deleteHistory(token, video._id, dispatch, setToastMessage)
             }
           >
-            <FaTrash title="delete" fontSize="1.2rem" />
+            <FaTrash title="delete" fontSize="1.2rem" color="red" />
           </button>
         </div>
       </div>
