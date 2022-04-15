@@ -6,6 +6,7 @@ import { getCategories, getProducts } from "./utils/server-request";
 const initialValue = {
   videos: [],
   categories: [],
+  history: [],
   categoryFilter: "",
 };
 
