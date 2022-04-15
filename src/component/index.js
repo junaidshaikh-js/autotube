@@ -13,6 +13,7 @@ import { Toast } from "./Toast/Toast";
 import { RequireAuth } from "./RequireAuth/RequireAuth";
 import { VideoCard } from "./VideoCard/VideoCard";
 import { Filters } from "./Filters/Filters";
+import { HorizontalVideoCard } from "./HorizontalVideoCard/HorizontalVideoCard";
 
 export {
   Loader,
@@ -30,4 +31,5 @@ export {
   SecondaryBtnOutline,
   VideoCard,
   Filters,
+  HorizontalVideoCard,
 };
