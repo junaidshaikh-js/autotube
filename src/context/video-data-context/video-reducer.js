@@ -1,6 +1,14 @@
 import { constants } from "./utils/constants";
 
-const { setVideos, setCategories, filter } = constants;
+const {
+  setVideos,
+  setCategories,
+  filter,
+  setHistory,
+  addToHistory,
+  deleteHistory,
+  deleteAllHistory,
+} = constants;
 
 export const videoReducer = (state, { type, payload }) => {
   switch (type) {
@@ -13,6 +21,14 @@ export const videoReducer = (state, { type, payload }) => {
       return {
         ...state,
         categories: payload,
+      };
+    case setHistory:
+    case addToHistory:
+    case deleteHistory:
+    case deleteAllHistory:
+      return {
+        ...state,
+        history: payload,
       };
     case filter:
       return {
