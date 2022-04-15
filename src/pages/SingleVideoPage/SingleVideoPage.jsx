@@ -4,7 +4,7 @@ import { AiFillLike } from "react-icons/ai";
 import { MdWatchLater, MdFeaturedPlayList } from "react-icons/md";
 import { useEffect, useState } from "react";
 
-import { useVideo } from "../../context";
+import { useAuth, useVideo } from "../../context";
 import {
   SecondaryBtnOutline,
   VideoCard,
@@ -12,6 +12,7 @@ import {
   PrimaryBtn,
 } from "../../component";
 import { getVideo, getRelatedVideos } from "./utils/utils";
+import { addToHistory } from "../../utils/server-requests";
 
 export const SingleVideoPage = () => {
   const { id } = useParams();
@@ -20,7 +21,12 @@ export const SingleVideoPage = () => {
 
   const {
     state: { videos },
+    dispatch,
   } = useVideo();
+
+  const {
+    state: { token },
+  } = useAuth();
 
   useEffect(() => {
     getVideo(setIsLoading, setCurrentVideo, id);
@@ -42,6 +48,7 @@ export const SingleVideoPage = () => {
                 height="100%"
                 className="video"
                 controls
+                onStart={() => addToHistory(token, currentVideo, dispatch)}
               />
             </div>
 
