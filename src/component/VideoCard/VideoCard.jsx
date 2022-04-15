@@ -1,17 +1,4 @@
-const months = [
-  "Jan",
-  "Feb",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "Aug",
-  "Sept",
-  "Oct",
-  "Nov",
-  "Dec",
-];
+import { months } from "../../utils/constants";
 
 export const VideoCard = ({ video }) => {
   const { thumbnail, title, views, createdAt, channelName, channelImage } =
