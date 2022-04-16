@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { deleteHistory } from "../../utils/server-requests";
 
 import {
   Loader,
@@ -36,7 +37,7 @@ export const History = () => {
           <Link to="/explore"> Watch some video now.</Link>
         </main>
       ) : (
-        <main className="history-main mt-2">
+        <main className="page-main mt-2">
           <header className="flex justify-between align-center">
             <h1 className="h2 section-heading">History</h1>
             <SecondaryBtnOutline
@@ -48,7 +49,15 @@ export const History = () => {
 
           <section className="mt-2">
             {history.map((video) => {
-              return <HorizontalVideoCard video={video} key={video.videoId} />;
+              return (
+                <HorizontalVideoCard
+                  video={video}
+                  key={video.videoId}
+                  onClick={() =>
+                    deleteHistory(token, video._id, dispatch, setToastMessage)
+                  }
+                />
+              );
             })}
           </section>
         </main>
