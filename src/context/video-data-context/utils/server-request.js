@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { constants } from "./constants";
 
-const { setVideos, setCategories } = constants;
+const { setVideos, setCategories, setLikedVideos } = constants;
 
 export const getProducts = async (dispatch) => {
   try {
@@ -26,5 +26,13 @@ export const getCategories = async (disaptch) => {
   } catch (error) {
     console.log(error);
     throw new Error("can not fetch categories");
+  }
+};
+
+export const getLikedVideos = async (dispatch, token) => {
+  if (token) {
+    const likes = JSON.parse(localStorage.getItem("user")).likes;
+
+    dispatch({ type: constants.setLikedVideos, payload: likes });
   }
 };

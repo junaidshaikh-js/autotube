@@ -3,12 +3,13 @@
 
   .video-title {
     font-size: 1.2rem;
+    color: $white;
   }
 
   &--details {
     position: relative;
 
-    .history-delete-btn {
+    .delete-btn {
       position: absolute;
       right: 2%;
       top: 0;

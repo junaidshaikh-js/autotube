@@ -8,6 +8,9 @@ const {
   addToHistory,
   deleteHistory,
   deleteAllHistory,
+  setLikedVideos,
+  addToLikedVideos,
+  removeFromLikedVideos,
 } = constants;
 
 export const videoReducer = (state, { type, payload }) => {
@@ -29,6 +32,13 @@ export const videoReducer = (state, { type, payload }) => {
       return {
         ...state,
         history: payload,
+      };
+    case setLikedVideos:
+    case addToLikedVideos:
+    case removeFromLikedVideos:
+      return {
+        ...state,
+        likedVideos: payload,
       };
     case filter:
       return {

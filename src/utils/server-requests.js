@@ -109,3 +109,77 @@ export const deleteAllHistory = async (token, dispatch, setToastMessage) => {
     throw new Error("Video can not be added to history");
   }
 };
+
+export const addToLikedVideos = async (
+  token,
+  video,
+  dispatch,
+  setToastMessage,
+  isLoading
+) => {
+  isLoading(true);
+  try {
+    const res = await axios({
+      url: "/api/user/likes",
+      method: "post",
+      data: {
+        video,
+      },
+      headers: {
+        authorization: token,
+      },
+    });
+
+    if (res.status == 200 || res.status == 201) {
+      dispatch({ type: constants.addToLikedVideos, payload: res.data.likes });
+
+      updateLocalStorage("likes", res.data.likes);
+
+      setToastMessage({ type: "success", message: "Added to liked videos" });
+    }
+    isLoading(false);
+  } catch (error) {
+    isLoading(false);
+    setToastMessage({ type: "error", message: "Please try again later" });
+    throw new Error("Failed to add to liked videos");
+  }
+};
+
+export const removeFromLikedVideos = async (
+  token,
+  id,
+  dispatch,
+  setToastMessage,
+  isLoading
+) => {
+  isLoading?.(true);
+  try {
+    const res = await axios({
+      url: `/api/user/likes/${id}`,
+      method: "delete",
+      headers: {
+        authorization: token,
+      },
+    });
+
+    if (res.status == 200 || res.status == 201) {
+      dispatch({
+        type: constants.removeFromLikedVideos,
+        payload: res.data.likes,
+      });
+
+      updateLocalStorage("likes", res.data.likes);
+
+      setToastMessage({
+        type: "success",
+        message: "Removed from liked videos",
+      });
+    }
+
+    isLoading?.(false);
+  } catch (error) {
+    isLoading?.(false);
+    setToastMessage({ type: "error", message: "Please try again later" });
+    throw new Error("Failed to remove from liked videos");
+  }
+};

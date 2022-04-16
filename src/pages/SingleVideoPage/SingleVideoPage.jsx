@@ -4,29 +4,33 @@ import { AiFillLike } from "react-icons/ai";
 import { MdWatchLater, MdFeaturedPlayList } from "react-icons/md";
 import { useEffect, useState } from "react";
 
-import { useAuth, useVideo } from "../../context";
+import { useAuth, useToast, useVideo } from "../../context";
 import {
   SecondaryBtnOutline,
   VideoCard,
   Loader,
   PrimaryBtn,
 } from "../../component";
-import { getVideo, getRelatedVideos } from "./utils/utils";
+import { getVideo, getRelatedVideos, handleLike } from "./utils/utils";
 import { addToHistory } from "../../utils/server-requests";
+import { isInList } from "../../utils/helper-functions";
 
 export const SingleVideoPage = () => {
   const { id } = useParams();
   const [currentVideo, setCurrentVideo] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isButtonActionLoading, setIsButtonActionLoading] = useState(false);
 
   const {
-    state: { videos },
+    state: { videos, likedVideos },
     dispatch,
   } = useVideo();
 
   const {
     state: { token },
   } = useAuth();
+
+  const { setToastMessage } = useToast();
 
   useEffect(() => {
     getVideo(setIsLoading, setCurrentVideo, id);
@@ -43,7 +47,7 @@ export const SingleVideoPage = () => {
           <section className="video-details">
             <div className="video-player-container">
               <ReactPlayer
-                url={currentVideo?.url}
+                url={currentVideo.url}
                 width="100%"
                 height="100%"
                 className="video"
@@ -54,24 +58,41 @@ export const SingleVideoPage = () => {
 
             <div className="video-infomation flex">
               <div className="mt-1">
-                <h1 className="h4 txt-semibold">{currentVideo?.title}</h1>
-                <p>{currentVideo?.description}</p>
+                <h1 className="h4 txt-semibold">{currentVideo.title}</h1>
+                <p>{currentVideo.description}</p>
               </div>
             </div>
 
             <div className="video-action-btns my-1 flex flex-column">
               <div className="btn-row">
-                <SecondaryBtnOutline>
+                <SecondaryBtnOutline
+                  onClick={() =>
+                    handleLike(
+                      token,
+                      setToastMessage,
+                      currentVideo,
+                      likedVideos,
+                      dispatch,
+                      setIsButtonActionLoading
+                    )
+                  }
+                  cnames={
+                    isInList(likedVideos, currentVideo.videoId)
+                      ? "isActive"
+                      : ""
+                  }
+                  disable={isButtonActionLoading}
+                >
                   <AiFillLike className="mr-sm" />
                   <span>Like</span>
                 </SecondaryBtnOutline>
-                <SecondaryBtnOutline>
+                <SecondaryBtnOutline disable={isButtonActionLoading}>
                   <MdWatchLater className="mr-sm" />
                   <span>Watch Later</span>
                 </SecondaryBtnOutline>
               </div>
               <div className="btn-row">
-                <SecondaryBtnOutline>
+                <SecondaryBtnOutline disable={isButtonActionLoading}>
                   <MdFeaturedPlayList className="mr-sm" />
                   <span>Add to Playlist</span>
                 </SecondaryBtnOutline>
