@@ -11,7 +11,12 @@ import {
   Loader,
   PrimaryBtn,
 } from "../../component";
-import { getVideo, getRelatedVideos, handleLike } from "./utils/utils";
+import {
+  getVideo,
+  getRelatedVideos,
+  handleLike,
+  handleWatchLater,
+} from "./utils/utils";
 import { addToHistory } from "../../utils/server-requests";
 import { isInList } from "../../utils/helper-functions";
 
@@ -22,7 +27,7 @@ export const SingleVideoPage = () => {
   const [isButtonActionLoading, setIsButtonActionLoading] = useState(false);
 
   const {
-    state: { videos, likedVideos },
+    state: { videos, likedVideos, watchLater },
     dispatch,
   } = useVideo();
 
@@ -86,7 +91,22 @@ export const SingleVideoPage = () => {
                   <AiFillLike className="mr-sm" />
                   <span>Like</span>
                 </SecondaryBtnOutline>
-                <SecondaryBtnOutline disable={isButtonActionLoading}>
+                <SecondaryBtnOutline
+                  disable={isButtonActionLoading}
+                  cnames={
+                    isInList(watchLater, currentVideo.videoId) ? "isActive" : ""
+                  }
+                  onClick={() => {
+                    handleWatchLater(
+                      token,
+                      setToastMessage,
+                      currentVideo,
+                      watchLater,
+                      dispatch,
+                      setIsButtonActionLoading
+                    );
+                  }}
+                >
                   <MdWatchLater className="mr-sm" />
                   <span>Watch Later</span>
                 </SecondaryBtnOutline>

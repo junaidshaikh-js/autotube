@@ -11,6 +11,9 @@ const {
   setLikedVideos,
   addToLikedVideos,
   removeFromLikedVideos,
+  setWatchLater,
+  addToWatchLater,
+  removeFromWatchLater,
 } = constants;
 
 export const videoReducer = (state, { type, payload }) => {
@@ -39,6 +42,13 @@ export const videoReducer = (state, { type, payload }) => {
       return {
         ...state,
         likedVideos: payload,
+      };
+    case setWatchLater:
+    case addToWatchLater:
+    case removeFromWatchLater:
+      return {
+        ...state,
+        watchLater: payload,
       };
     case filter:
       return {

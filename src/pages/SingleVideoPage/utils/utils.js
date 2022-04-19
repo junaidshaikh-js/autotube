@@ -3,6 +3,8 @@ import { isInList } from "../../../utils/helper-functions";
 import {
   addToLikedVideos,
   removeFromLikedVideos,
+  addToWatchLater,
+  removeFromWatchLater,
 } from "../../../utils/server-requests";
 
 export const getVideo = async (setIsLoading, setCurrentVideo, id) => {
@@ -49,6 +51,37 @@ export const handleLike = (
       );
     } else {
       removeFromLikedVideos(
+        token,
+        currentVideo._id,
+        dispatch,
+        setToastMessage,
+        isLoading
+      );
+    }
+  }
+};
+
+export const handleWatchLater = (
+  token,
+  setToastMessage,
+  currentVideo,
+  watchLater,
+  dispatch,
+  isLoading
+) => {
+  if (!token) {
+    setToastMessage({ type: "error", message: "Please login first." });
+  } else {
+    if (!isInList(watchLater, currentVideo.videoId)) {
+      addToWatchLater(
+        token,
+        currentVideo,
+        dispatch,
+        setToastMessage,
+        isLoading
+      );
+    } else {
+      removeFromWatchLater(
         token,
         currentVideo._id,
         dispatch,
