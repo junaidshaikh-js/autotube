@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { constants } from "./constants";
 
-const { setVideos, setCategories, setLikedVideos } = constants;
+const { setVideos, setCategories, setLikedVideos, setWatchLater } = constants;
 
 export const getProducts = async (dispatch) => {
   try {
@@ -33,6 +33,14 @@ export const getLikedVideos = async (dispatch, token) => {
   if (token) {
     const likes = JSON.parse(localStorage.getItem("user")).likes;
 
-    dispatch({ type: constants.setLikedVideos, payload: likes });
+    dispatch({ type: setLikedVideos, payload: likes });
+  }
+};
+
+export const getWatchLater = async (dispatch, token) => {
+  if (token) {
+    const watchLater = JSON.parse(localStorage.getItem("user")).watchlater;
+
+    dispatch({ type: setWatchLater, payload: watchLater });
   }
 };

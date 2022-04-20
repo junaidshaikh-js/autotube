@@ -110,6 +110,7 @@ export const deleteAllHistory = async (token, dispatch, setToastMessage) => {
   }
 };
 
+// like videos
 export const addToLikedVideos = async (
   token,
   video,
@@ -181,5 +182,86 @@ export const removeFromLikedVideos = async (
     isLoading?.(false);
     setToastMessage({ type: "error", message: "Please try again later" });
     throw new Error("Failed to remove from liked videos");
+  }
+};
+
+// watch later
+
+export const addToWatchLater = async (
+  token,
+  video,
+  dispatch,
+  setToastMessage,
+  isLoading
+) => {
+  isLoading(true);
+  try {
+    const res = await axios({
+      url: "/api/user/watchlater",
+      method: "post",
+      data: {
+        video,
+      },
+      headers: {
+        authorization: token,
+      },
+    });
+
+    if (res.status == 200 || res.status == 201) {
+      const { watchlater } = res.data;
+      dispatch({
+        type: constants.addToWatchLater,
+        payload: watchlater,
+      });
+
+      updateLocalStorage("watchlater", watchlater);
+
+      setToastMessage({ type: "success", message: "Added to watch later." });
+    }
+    isLoading(false);
+  } catch (error) {
+    isLoading(false);
+    setToastMessage({ type: "error", message: "Please try again later" });
+    throw new Error("Failed to add to watch later");
+  }
+};
+
+export const removeFromWatchLater = async (
+  token,
+  id,
+  dispatch,
+  setToastMessage,
+  isLoading
+) => {
+  isLoading?.(true);
+  try {
+    const res = await axios({
+      url: `/api/user/watchlater/${id}`,
+      method: "delete",
+      headers: {
+        authorization: token,
+      },
+    });
+
+    if (res.status == 200 || res.status == 201) {
+      const { watchlater } = res.data;
+      dispatch({
+        type: constants.addToWatchLater,
+        payload: watchlater,
+      });
+
+      updateLocalStorage("watchlater", watchlater);
+
+      setToastMessage({
+        type: "success",
+        message: "Removed from watch later",
+      });
+    }
+
+    isLoading?.(false);
+  } catch (error) {
+    isLoading?.(false);
+    setToastMessage({ type: "error", message: "Please try again later" });
+    throw new Error("Failed to remove from watch later");
   }
 };

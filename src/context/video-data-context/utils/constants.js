@@ -9,4 +9,7 @@ export const constants = {
   setLikedVideos: "SET_LIKED_VIDEOS",
   addToLikedVideos: "ADD_TO_LIKED_VIDEOS",
   removeFromLikedVideos: "REMOVE_FROM_LIKED_VIDEOS",
+  setWatchLater: "SET_WATCH_LATER",
+  addToWatchLater: "ADD_TO_WATCH_LATER",
+  removeFromWatchLater: "REMOVE_FROM_WATCH_LATER",
 };

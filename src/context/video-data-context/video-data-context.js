@@ -5,6 +5,7 @@ import {
   getCategories,
   getLikedVideos,
   getProducts,
+  getWatchLater,
 } from "./utils/server-request";
 import { useAuth } from "../auth-context/auth-context";
 
@@ -13,6 +14,7 @@ const initialValue = {
   categories: [],
   history: [],
   likedVideos: [],
+  watchLater: [],
   categoryFilter: "",
 };
 
@@ -28,6 +30,7 @@ const VideoProvider = ({ children }) => {
   useEffect(() => {
     getCategories(dispatch), getProducts(dispatch);
     getLikedVideos(dispatch, token);
+    getWatchLater(dispatch, token);
   }, []);
   const value = { state, dispatch };
 
