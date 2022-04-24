@@ -12,4 +12,9 @@ export const constants = {
   setWatchLater: "SET_WATCH_LATER",
   addToWatchLater: "ADD_TO_WATCH_LATER",
   removeFromWatchLater: "REMOVE_FROM_WATCH_LATER",
+  setPlaylists: "SET_PLAYLISTS",
+  addPlaylist: "ADD_PLAYLISTS",
+  deletePlaylist: "DELETE_PLAYLISTS",
+  addVideoToPlaylist: "ADD_VIDEO_TO_PLAYLIST",
+  removeVideoFromPlaylist: "REMOVE_VIDEO_FROM_PLAYLIST",
 };

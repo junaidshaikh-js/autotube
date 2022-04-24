@@ -14,6 +14,11 @@ const {
   setWatchLater,
   addToWatchLater,
   removeFromWatchLater,
+  setPlaylists,
+  addPlaylist,
+  deletePlaylist,
+  addVideoToPlaylist,
+  removeVideoFromPlaylist,
 } = constants;
 
 export const videoReducer = (state, { type, payload }) => {
@@ -49,6 +54,21 @@ export const videoReducer = (state, { type, payload }) => {
       return {
         ...state,
         watchLater: payload,
+      };
+    case setPlaylists:
+    case addPlaylist:
+    case deletePlaylist:
+      return {
+        ...state,
+        playlists: payload,
+      };
+    case addVideoToPlaylist:
+    case removeVideoFromPlaylist:
+      return {
+        ...state,
+        playlists: state.playlists.map((playlist) =>
+          playlist._id == payload._id ? payload : playlist
+        ),
       };
     case filter:
       return {
