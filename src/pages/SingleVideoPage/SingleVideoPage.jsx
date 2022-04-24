@@ -10,6 +10,8 @@ import {
   VideoCard,
   Loader,
   PrimaryBtn,
+  ReactPortal,
+  Modal,
 } from "../../component";
 import {
   getVideo,
@@ -25,6 +27,7 @@ export const SingleVideoPage = () => {
   const [currentVideo, setCurrentVideo] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isButtonActionLoading, setIsButtonActionLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const {
     state: { videos, likedVideos, watchLater },
@@ -112,7 +115,12 @@ export const SingleVideoPage = () => {
                 </SecondaryBtnOutline>
               </div>
               <div className="btn-row">
-                <SecondaryBtnOutline disable={isButtonActionLoading}>
+                <SecondaryBtnOutline
+                  disable={isButtonActionLoading}
+                  onClick={() => {
+                    setShowModal(true);
+                  }}
+                >
                   <MdFeaturedPlayList className="mr-sm" />
                   <span>Add to Playlist</span>
                 </SecondaryBtnOutline>
@@ -146,6 +154,16 @@ export const SingleVideoPage = () => {
               })}
             </div>
           </section>
+
+          {showModal && (
+            <ReactPortal>
+              <Modal
+                closeModal={() => setShowModal(false)}
+                from="video-page"
+                currentVideo={currentVideo}
+              />
+            </ReactPortal>
+          )}
         </main>
       )}
     </div>
