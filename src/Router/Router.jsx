@@ -11,6 +11,7 @@ import {
   Login,
   Signup,
   SingleVideoPage,
+  SinglePlaylist,
 } from "../pages";
 
 import { RequireAuth } from "../component";
@@ -28,6 +29,14 @@ export function Router() {
         element={
           <RequireAuth>
             <Playlist />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/playlist/:playlistId"
+        element={
+          <RequireAuth>
+            <SinglePlaylist />
           </RequireAuth>
         }
       />
