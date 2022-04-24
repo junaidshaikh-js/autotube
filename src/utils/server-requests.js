@@ -265,3 +265,161 @@ export const removeFromWatchLater = async (
     throw new Error("Failed to remove from watch later");
   }
 };
+
+// playlists
+
+export const addToPlaylist = async (
+  dispatch,
+  token,
+  setToastMessage,
+  playlist
+) => {
+  try {
+    const res = await axios({
+      url: `/api/user/playlists`,
+      method: "post",
+      headers: {
+        authorization: token,
+      },
+      data: {
+        playlist,
+      },
+    });
+
+    if (res.status == 200 || res.status == 201) {
+      const { playlists } = res.data;
+      dispatch({
+        type: constants.addPlaylist,
+        payload: playlists,
+      });
+
+      updateLocalStorage("playlists", playlists);
+
+      setToastMessage({
+        type: "success",
+        message: "Playlist added",
+      });
+    }
+  } catch (error) {
+    setToastMessage({ type: "error", message: "Please try again later" });
+    throw new Error("Failed to add playlist.");
+  }
+};
+
+export const deletePlaylist = async (token, dispatch, id, setToastMessage) => {
+  try {
+    const res = await axios({
+      url: `/api/user/playlists/${id}`,
+      method: "delete",
+      headers: {
+        authorization: token,
+      },
+    });
+
+    if (res.status == 200 || res.status == 201) {
+      const { playlists } = res.data;
+      dispatch({
+        type: constants.deletePlaylist,
+        payload: playlists,
+      });
+
+      updateLocalStorage("playlists", playlists);
+
+      setToastMessage({
+        type: "success",
+        message: "Playlist deleted",
+      });
+    }
+  } catch (error) {
+    setToastMessage({ type: "error", message: "Please try again later" });
+    throw new Error("Failed to delete playlist.");
+  }
+};
+
+export const addVideoToPlaylist = async (
+  dispatch,
+  token,
+  setToastMessage,
+  playlist,
+  currentVideo,
+  playlistsArray
+) => {
+  try {
+    const res = await axios({
+      url: `/api/user/playlists/${playlist._id}`,
+      method: "post",
+      headers: {
+        authorization: token,
+      },
+      data: {
+        video: currentVideo,
+      },
+    });
+    if (res.status == 200 || res.status == 201) {
+      const { playlist } = res.data;
+      dispatch({
+        type: constants.addVideoToPlaylist,
+        payload: playlist,
+      });
+
+      const playlists = playlistsArray.map((_playlist) =>
+        playlist._id == _playlist._id ? playlist : _playlist
+      );
+
+      updateLocalStorage("playlists", playlists);
+
+      setToastMessage({
+        type: "success",
+        message: "Video Added to playlist",
+      });
+    }
+  } catch (error) {
+    setToastMessage({ type: "error", message: "Please try again later" });
+    console.log(error);
+    throw new Error("Failed to add playlist.");
+  }
+};
+
+export const removeVideoFromPlaylist = async (
+  dispatch,
+  token,
+  setToastMessage,
+  playlist,
+  currentVideo,
+  playlistsArray
+) => {
+  try {
+    const res = await axios({
+      url: `/api/user/playlists/${playlist._id}/${currentVideo._id}`,
+      method: "delete",
+      headers: {
+        authorization: token,
+      },
+      data: {
+        video: currentVideo,
+      },
+    });
+    if (res.status == 200 || res.status == 201) {
+      const { playlist } = res.data;
+      dispatch({
+        type: constants.removeVideoFromPlaylist,
+        payload: playlist,
+      });
+
+      const playlists = playlistsArray.map((_playlist) =>
+        playlist._id == _playlist._id ? playlist : _playlist
+      );
+
+      updateLocalStorage("playlists", playlists);
+
+      setToastMessage({
+        type: "success",
+        message: "Video removed from playlist",
+      });
+    }
+  } catch (error) {
+    setToastMessage({ type: "error", message: "Please try again later" });
+    console.log(error);
+    throw new Error("Failed to add playlist.");
+  }
+};
