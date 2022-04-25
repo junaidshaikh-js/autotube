@@ -118,7 +118,14 @@ export const SingleVideoPage = () => {
                 <SecondaryBtnOutline
                   disable={isButtonActionLoading}
                   onClick={() => {
-                    setShowModal(true);
+                    if (!token) {
+                      setToastMessage({
+                        type: "error",
+                        message: "Please login first.",
+                      });
+                    } else {
+                      setShowModal(true);
+                    }
                   }}
                 >
                   <MdFeaturedPlayList className="mr-sm" />
