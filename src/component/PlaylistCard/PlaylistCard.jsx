@@ -6,6 +6,7 @@ import { deletePlaylist } from "../../utils/server-requests";
 import { useAuth, useToast, useVideo } from "../../context";
 
 export const PlaylistCard = ({ playlist }) => {
+  const { _id, videos, title, description } = playlist;
   const {
     state: { token },
   } = useAuth();
@@ -15,12 +16,15 @@ export const PlaylistCard = ({ playlist }) => {
   const { setToastMessage } = useToast();
 
   return (
-    <Link to={`/playlist/${playlist._id}`} className="playlist-card">
+    <Link to={`/playlist/${_id}`} className="playlist-card">
       <article className="my-1 p-sm">
         <div className="flex flex-center img-container">
-          {playlist.videos.length ? (
+          {videos.length ? (
             <figure>
-              <img src={playlist.videos[0].thumbnail} alt="" />
+              <img
+                src={videos[0].thumbnail}
+                alt="thumbnail of first video in the playlist"
+              />
             </figure>
           ) : (
             <div className="txt-center">
@@ -31,15 +35,15 @@ export const PlaylistCard = ({ playlist }) => {
         </div>
         <div className="flex justify-between playlist-details">
           <div className="mr-1">
-            <h2 className="h4">{playlist.title}</h2>
-            <p>{playlist.description}</p>
+            <h2 className="h4">{title}</h2>
+            <p>{description}</p>
           </div>
           <div>
             <button
               className="btn playlist-delete-btn"
               onClick={(e) => {
                 e.preventDefault();
-                deletePlaylist(token, dispatch, playlist._id, setToastMessage);
+                deletePlaylist(token, dispatch, _id, setToastMessage);
               }}
             >
               <FaTrash title="delete" fontSize="1.2rem" color="red" />
