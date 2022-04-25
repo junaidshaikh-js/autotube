@@ -6,6 +6,7 @@ import {
   getLikedVideos,
   getProducts,
   getWatchLater,
+  getPlaylists,
 } from "./utils/server-request";
 import { useAuth } from "../auth-context/auth-context";
 
@@ -15,6 +16,7 @@ const initialValue = {
   history: [],
   likedVideos: [],
   watchLater: [],
+  playlists: [],
   categoryFilter: "",
 };
 
@@ -31,6 +33,7 @@ const VideoProvider = ({ children }) => {
     getCategories(dispatch), getProducts(dispatch);
     getLikedVideos(dispatch, token);
     getWatchLater(dispatch, token);
+    getPlaylists(dispatch, token);
   }, []);
   const value = { state, dispatch };
 

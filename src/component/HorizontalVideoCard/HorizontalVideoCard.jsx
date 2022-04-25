@@ -21,7 +21,7 @@ export const HorizontalVideoCard = ({ video, onClick }) => {
   const day = date.getDate();
 
   return (
-    <article className="horizontal-card my-1 flex">
+    <article className="horizontal-card my-2 flex">
       <Link to={`/watch/${video.videoId}`}>
         <figure className="txt-center thumbnail mr-1">
           <img src={thumbnail} alt="video thumbnail" width="300" height="180" />

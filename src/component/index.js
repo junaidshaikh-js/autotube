@@ -14,6 +14,9 @@ import { RequireAuth } from "./RequireAuth/RequireAuth";
 import { VideoCard } from "./VideoCard/VideoCard";
 import { Filters } from "./Filters/Filters";
 import { HorizontalVideoCard } from "./HorizontalVideoCard/HorizontalVideoCard";
+import { ReactPortal } from "./ReactPortal/ReactProtal";
+import { Modal } from "./Modal/Modal";
+import { PlaylistCard } from "./PlaylistCard/PlaylistCard";
 
 export {
   Loader,
@@ -32,4 +35,7 @@ export {
   VideoCard,
   Filters,
   HorizontalVideoCard,
+  ReactPortal,
+  Modal,
+  PlaylistCard,
 };
