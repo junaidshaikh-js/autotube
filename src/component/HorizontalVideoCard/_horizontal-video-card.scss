@@ -1,0 +1,28 @@
+.horizontal-card {
+  flex-direction: column;
+
+  .video-title {
+    font-size: 1.2rem;
+    color: $white;
+  }
+
+  &--details {
+    position: relative;
+
+    .delete-btn {
+      position: absolute;
+      right: 2%;
+      top: 0;
+    }
+  }
+}
+
+@media screen and (min-width: 40em) {
+  .horizontal-card {
+    flex-direction: row;
+
+    &--details {
+      width: 100%;
+    }
+  }
+}

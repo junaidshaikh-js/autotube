@@ -6,3 +6,5 @@ export * from "./WatchLater";
 export * from "./History";
 export * from "./LikedVideos";
 export * from "./auth";
+export * from "./SingleVideoPage/SingleVideoPage";
+export * from "./SinglePlaylist/SinglePlaylist";

@@ -1,6 +1,27 @@
 @import "./auth/auth";
 @import "./LandingPage/landing-page";
+@import "./VideoListing/video-listing";
+@import "./SingleVideoPage/single-video-page";
+@import "./Playlist/playlist";
 
 .wrapper {
   margin-bottom: 80px;
+}
+
+.empty-page {
+  height: 80vh;
+  font-size: 1.4rem;
+
+  p {
+    font-size: 1.4rem;
+  }
+
+  a {
+    color: $primary-cta;
+  }
+}
+
+.page-main {
+  width: min(90vw, 1200px);
+  margin-inline: auto;
 }
