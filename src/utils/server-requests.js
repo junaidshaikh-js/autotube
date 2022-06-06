@@ -42,7 +42,6 @@ export const addToHistory = async (token, video, dispatch) => {
       updateLocalStorage("history", res.data.history);
     }
   } catch (error) {
-    console.log(error);
     throw new Error("Video can not be added to history");
   }
 };
@@ -68,8 +67,6 @@ export const deleteHistory = async (token, id, dispatch, setToastMessage) => {
       updateLocalStorage("history", res.data.history);
     }
   } catch (error) {
-    console.log(error);
-
     setToastMessage({
       type: "error",
       message: "Can not delete. Try again later.",
@@ -99,8 +96,6 @@ export const deleteAllHistory = async (token, dispatch, setToastMessage) => {
       updateLocalStorage("history", res.data.history);
     }
   } catch (error) {
-    console.log(error);
-
     setToastMessage({
       type: "error",
       message: "Can not clear history. Try again later.",
@@ -375,7 +370,6 @@ export const addVideoToPlaylist = async (
     }
   } catch (error) {
     setToastMessage({ type: "error", message: "Please try again later" });
-    console.log(error);
     throw new Error("Failed to add playlist.");
   }
 };
@@ -419,7 +413,6 @@ export const removeVideoFromPlaylist = async (
     }
   } catch (error) {
     setToastMessage({ type: "error", message: "Please try again later" });
-    console.log(error);
     throw new Error("Failed to add playlist.");
   }
 };

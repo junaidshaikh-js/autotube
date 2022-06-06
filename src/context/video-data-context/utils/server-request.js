@@ -30,7 +30,6 @@ export const getCategories = async (disaptch) => {
       disaptch({ type: setCategories, payload: res.data.categories });
     }
   } catch (error) {
-    console.log(error);
     throw new Error("can not fetch categories");
   }
 };
