@@ -9,6 +9,19 @@ export const VideoCard = ({ video }) => {
   const month = months[date.getMonth()];
   const day = date.getDate();
 
+  const getViews = (views) => {
+    views = String(views);
+    if (views > 1000 && views < 999_999) {
+      return views.slice(0, views.length - 3) + "K";
+    }
+
+    if (views > 999_999) {
+      return views.slice(0, views.length - 6) + "M";
+    }
+
+    return views;
+  };
+
   return (
     <article className="video-card my-1">
       <figure className="txt-center thumbnail">
@@ -25,7 +38,7 @@ export const VideoCard = ({ video }) => {
           <p className="mb-sm mt-0 video-title">{title}</p>
           <span className="txt-secondary">{channelName}</span>
           <div className="flex txt-secondary mt-sm">
-            <span className="video-views">{views} views</span>
+            <span className="video-views">{getViews(views)}</span>
             <span>{`${day} ${month} ${year}`}</span>
           </div>
         </div>
