@@ -1,6 +1,7 @@
 .app-navigation {
   background-color: $primary-black;
   bottom: 0;
+  border-top: 1px solid hsl(0, 0%, 50%);
   position: fixed;
   z-index: 1;
 
