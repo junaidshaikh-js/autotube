@@ -64,14 +64,7 @@ export const SingleVideoPage = () => {
               />
             </div>
 
-            <div className="video-infomation flex">
-              <div className="mt-1">
-                <h1 className="h4 txt-semibold">{currentVideo.title}</h1>
-                <p>{currentVideo.description}</p>
-              </div>
-            </div>
-
-            <div className="video-action-btns my-1 flex flex-column">
+            <div className="video-action-btns my-2 flex flex-column">
               <div className="btn-row">
                 <SecondaryBtnOutline
                   onClick={() =>
@@ -145,7 +138,13 @@ export const SingleVideoPage = () => {
               <div>
                 <span>{currentVideo?.channelName} </span>
               </div>
-              <PrimaryBtn cnames="ml-auto">Subscribe</PrimaryBtn>
+            </div>
+
+            <div className="video-infomation flex">
+              <div className="mt-1">
+                <h1 className="h4 txt-semibold">{currentVideo.title}</h1>
+                <p>{currentVideo.description}</p>
+              </div>
             </div>
           </section>
 
