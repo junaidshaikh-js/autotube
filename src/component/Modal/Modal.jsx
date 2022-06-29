@@ -150,6 +150,7 @@ export const Modal = ({ closeModal, from, currentVideo }) => {
             type="button"
             className="btn modal-close-btn"
             onClick={() => closeModal()}
+            title="Close"
           >
             <FaRegTimesCircle fontSize="1.5rem" />
           </button>
