@@ -64,6 +64,10 @@ export const SingleVideoPage = () => {
               />
             </div>
 
+            <div>
+              <h1 className="h4 txt-semibold">{currentVideo.title}</h1>
+            </div>
+
             <div className="video-action-btns my-2 flex flex-column">
               <div className="btn-row">
                 <SecondaryBtnOutline
@@ -142,7 +146,6 @@ export const SingleVideoPage = () => {
 
             <div className="video-infomation flex">
               <div className="mt-1">
-                <h1 className="h4 txt-semibold">{currentVideo.title}</h1>
                 <p>{currentVideo.description}</p>
               </div>
             </div>
