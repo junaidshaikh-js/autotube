@@ -37,7 +37,9 @@ export const PlaylistCard = ({ playlist }) => {
           <div className="mr-1">
             <h2 className="h4">{title}</h2>
             <p className="txt-secondary my-0 ">
-              {videos.length > 1 ? `${videos.length} videos` : " 1 video"}{" "}
+              {videos.length > 1
+                ? `${videos.length} videos`
+                : `${videos.length} video`}
             </p>
             <p>{description}</p>
           </div>
