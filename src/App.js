@@ -5,7 +5,7 @@ import { useToast } from "./context";
 
 function App() {
   const {
-    toastMessage: { type, message },
+    toastMessage: { type, message, id },
   } = useToast();
 
   return (
@@ -13,7 +13,7 @@ function App() {
       <Header />
       <Navigation />
       <Router />
-      <Toast type={type} message={message} />
+      <Toast type={type} message={message} id={id} />
     </div>
   );
 }

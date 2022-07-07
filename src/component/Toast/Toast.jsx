@@ -1,7 +1,7 @@
 import { FaCheckCircle, FaInfoCircle } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
-export const Toast = ({ type, message }) => {
+export const Toast = ({ type, message, id }) => {
   const [isToastVisible, setIsToastVisible] = useState(false);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export const Toast = ({ type, message }) => {
     return () => {
       clearTimeout(id);
     };
-  }, [message]);
+  }, [message, id]);
 
   return (
     <>

@@ -119,6 +119,7 @@ export const SingleVideoPage = () => {
                       setToastMessage({
                         type: "error",
                         message: "Please login first.",
+                        id: Date.now(),
                       });
                     } else {
                       setShowModal(true);

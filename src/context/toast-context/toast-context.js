@@ -3,6 +3,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 const initialValue = {
   type: "",
   message: "",
+  id: Date.now(),
 };
 
 const ToastContext = createContext(initialValue);

@@ -39,7 +39,11 @@ export const handleLike = (
   isLoading
 ) => {
   if (!token) {
-    setToastMessage({ type: "error", message: "Please login first." });
+    setToastMessage({
+      type: "error",
+      message: "Please login first.",
+      id: Date.now(),
+    });
   } else {
     if (!isInList(likedVideos, currentVideo.videoId)) {
       addToLikedVideos(
@@ -70,7 +74,11 @@ export const handleWatchLater = (
   isLoading
 ) => {
   if (!token) {
-    setToastMessage({ type: "error", message: "Please login first." });
+    setToastMessage({
+      type: "error",
+      message: "Please login first.",
+      id: Date.now(),
+    });
   } else {
     if (!isInList(watchLater, currentVideo.videoId)) {
       addToWatchLater(
