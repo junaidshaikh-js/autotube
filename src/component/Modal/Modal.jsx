@@ -43,14 +43,27 @@ export const Modal = ({ closeModal, from, currentVideo }) => {
   const createPlaylist = (e) => {
     e.preventDefault();
 
+    let isPlaylistExists = false;
+
     const playlist = {
       title: formData.playlistName,
       description: formData.playlistDescription,
     };
 
-    addToPlaylist(dispatch, token, setToastMessage, playlist);
+    playlists.forEach((_playlist) => {
+      console.log(_playlist.title == formData.playlistName);
+      if (_playlist.title == formData.playlistName) {
+        setToastMessage({ type: "error", message: "Playlist already exists." });
+        isPlaylistExists = true;
+        return;
+      }
+    });
 
-    setFormData(formIntialState);
+    if (!isPlaylistExists) {
+      addToPlaylist(dispatch, token, setToastMessage, playlist);
+
+      setFormData(formIntialState);
+    }
   };
 
   return (
