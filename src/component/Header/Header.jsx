@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaAngleRight, FaAngleDown } from "react-icons/fa";
 
 import Logo from "../../assets/AutoTube.svg";
-import { useAuth, useToast } from "../../context";
+import { useAuth, useToast, useVideo } from "../../context";
 import { useState } from "react";
 
 export const Header = () => {
@@ -14,6 +14,7 @@ export const Header = () => {
     handleLogout,
   } = useAuth();
   const { setToastMessage } = useToast();
+  const { dispatch: videoDispatch } = useVideo();
   const navigate = useNavigate();
 
   const toggleDropdown = () => setIsHovering((h) => !h);
@@ -45,7 +46,12 @@ export const Header = () => {
                 <button
                   className="btn"
                   onClick={() =>
-                    handleLogout(authDispatch, navigate, setToastMessage)
+                    handleLogout(
+                      authDispatch,
+                      navigate,
+                      setToastMessage,
+                      videoDispatch
+                    )
                   }
                 >
                   Logout

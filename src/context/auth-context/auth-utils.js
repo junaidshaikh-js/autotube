@@ -1,10 +1,14 @@
 import axios from "axios";
 
+import { constants } from "../video-data-context/utils/constants";
+
 export const abreviations = {
   login: "LOGIN",
   signup: "SIGNUP",
   logout: "LOGOUT",
 };
+
+const { logout } = constants;
 
 const setLocalStorage = (obj) => {
   for (let key in obj) {
@@ -63,10 +67,16 @@ export const handleLogin = async (
   }
 };
 
-export const handleLogout = (authDispatch, navigate, setToastMessage) => {
+export const handleLogout = (
+  authDispatch,
+  navigate,
+  setToastMessage,
+  videoDispatch
+) => {
   localStorage.clear();
 
   authDispatch({ type: abreviations.logout });
+  videoDispatch({ type: logout });
 
   navigate("/");
   setToastMessage({ type: "success", message: "Logout Successful!" });

@@ -19,6 +19,7 @@ const {
   deletePlaylist,
   addVideoToPlaylist,
   removeVideoFromPlaylist,
+  logout,
 } = constants;
 
 export const videoReducer = (state, { type, payload }) => {
@@ -74,6 +75,15 @@ export const videoReducer = (state, { type, payload }) => {
       return {
         ...state,
         categoryFilter: payload,
+      };
+    case logout:
+      return {
+        ...state,
+        history: [],
+        likedVideos: [],
+        watchLater: [],
+        playlists: [],
+        categoryFilter: "",
       };
     default:
       throw new Error(`Unhandled action type ${type}`);

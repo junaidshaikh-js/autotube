@@ -17,4 +17,5 @@ export const constants = {
   deletePlaylist: "DELETE_PLAYLISTS",
   addVideoToPlaylist: "ADD_VIDEO_TO_PLAYLIST",
   removeVideoFromPlaylist: "REMOVE_VIDEO_FROM_PLAYLIST",
+  logout: "LOG_OUT",
 };
